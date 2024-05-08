@@ -12,9 +12,19 @@ const Nav = () => {
   };
 
   return (
-    <div className="fixed z-50 top-0 left-0 w-full h-[120px] flex items-center justify-center">
-      <img src={logo} alt="title logo" width={150} />
-      <button className="modal-btn" onClick={infoBtnHandler}>
+    <div className="fixed z-50 top-0 left-0 w-full h-[120px]">
+      <img
+        src={logo}
+        alt="title logo"
+        width="150px"
+        height="100%"
+        className="absolute top-0 left-[50%] translate-x-[-50%]"
+      />
+      <button
+        className="h-full flex justify-center items-center absolute top-0 right-[2vmax]"
+        onClick={infoBtnHandler}
+        name="info button"
+      >
         <motion.svg
           whileHover={{
             scale: 2,

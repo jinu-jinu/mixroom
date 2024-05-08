@@ -1,10 +1,12 @@
+import { lazy } from "react";
 import RoomModels from "./RoomModels";
-import XLargeModels from "./XLargeModels";
-import LargeModels from "./LargeModels";
-import MediumModels from "./MediumModels";
-import SmallModels from "./SmallModels";
-import XSmallModels from "./XSmallModels";
-import Others from "./Others";
+
+const XLargeModels = lazy(() => import("./XLargeModels"));
+const LargeModels = lazy(() => import("./LargeModels"));
+const MediumModels = lazy(() => import("./MediumModels"));
+const SmallModels = lazy(() => import("./SmallModels"));
+const XSmallModels = lazy(() => import("./XSmallModels"));
+const Others = lazy(() => import("./Others"));
 
 const House = () => {
   return (
