@@ -20,10 +20,7 @@ const Nav = () => {
   };
 
   const closeModalHandler = () => {
-    if (!handleCurrentModal) {
-      console.log("not open modal");
-      return;
-    }
+    if (!handleCurrentModal) return;
     if (currentModal === "main") handleOpenMainModal(false);
     if (currentModal === "memberIntro") handleOpenMemberIntroModal(false);
     handleOpenModal(false);

@@ -6,11 +6,10 @@ import Loading1 from "./Loading1";
 import Loading2 from "./Loading2";
 
 const Loading = () => {
-  const { loaded, total } = useProgress();
+  const { loaded } = useProgress();
   const handleAssetDownload = useLoadingActions("handleAssetDownload");
 
   useEffect(() => {
-    console.log(total);
     if (loaded === 64) handleAssetDownload(true);
   }, [loaded]);
 

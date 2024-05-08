@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const ScrollIndicator = () => {
   return (
     <div
-      className="absolute bottom-8 w-full flex justify-center items-center pointer-events-none"
+      className="fixed bottom-8 w-full flex justify-center items-center pointer-events-none"
       title="스크롤"
     >
       <div className="w-[30px] h-[60px] rounded-3xl border-[3px] border-white flex justify-center items-start p-2">

@@ -1,16 +1,14 @@
 import { useEffect, useRef } from "react";
-import { PerspectiveCamera, useAnimations, useGLTF, useScroll } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
+import { PerspectiveCamera, useAnimations, useGLTF } from "@react-three/drei";
 import { AnimationAction, Group, MathUtils } from "three";
-import { useIsOpenModal } from "../../stores/ModalStore";
+import { useMotionValueEvent, useScroll } from "framer-motion";
 
 const MainCamera = () => {
   const group = useRef<Group>(null!);
   const cameraAction = useRef<AnimationAction>(null!);
   const { animations } = useGLTF("./models/mainCamera.glb");
   const { actions } = useAnimations(animations, group);
-  const openModal = useIsOpenModal();
-  const scroll = useScroll();
+  const { scrollYProgress } = useScroll();
 
   useEffect(() => {
     cameraAction.current = actions["CameraAction"]!;
@@ -18,13 +16,11 @@ const MainCamera = () => {
     cameraAction.current.paused = true;
   }, []);
 
-  useFrame(() => {
-    if (openModal) return;
-
+  useMotionValueEvent(scrollYProgress, "change", (e) => {
     cameraAction.current.time = MathUtils.lerp(
       cameraAction.current.time,
-      cameraAction.current.getClip().duration * scroll.offset,
-      0.03
+      cameraAction.current.getClip().duration * e,
+      0.1
     );
   });
 

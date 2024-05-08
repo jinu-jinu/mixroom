@@ -1,6 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import House from "./components/House";
-import { Environment, ScrollControls, useHelper } from "@react-three/drei";
+import { Environment, useHelper } from "@react-three/drei";
 import MainCamera from "./components/House/MainCamera";
 import { Suspense, useEffect, useRef } from "react";
 import { colors, isMobileDevice } from "./utils/utils";
@@ -9,6 +9,7 @@ import HtmlSection from "./layout/HtmlSection";
 import { Light, Object3D, PointLightHelper } from "three";
 import { EffectComposer } from "@react-three/postprocessing";
 import FilterElem from "./effect/FilterElem";
+import SmoothScroll from "./utils/SmoothScroll";
 
 const Lights = () => {
   const light = useRef<Light>(null!);
@@ -69,25 +70,35 @@ function App() {
   }, [isMobile]);
 
   return (
-    <>
-      <Canvas shadows style={{ width: "100%", height: "100dvh", backgroundColor: "#111" }}>
-        <Lights />
+    <SmoothScroll>
+      <>
+        <Canvas
+          shadows
+          style={{
+            width: "100%",
+            height: "100dvh",
+            position: "fixed",
+            top: 0,
+            left: 0,
+            backgroundColor: "#afeefa",
+          }}
+        >
+          <Lights />
 
-        <Suspense fallback={null}>
-          <House />
-          <ScrollControls pages={25}>
+          <Suspense fallback={null}>
+            <House />
             <MainCamera />
-          </ScrollControls>
-          <EffectComposer disableNormalPass>
-            <FilterElem />
-          </EffectComposer>
+            <EffectComposer disableNormalPass>
+              <FilterElem />
+            </EffectComposer>
 
-          <Environment files="/venice_sunrise_1k.exr" />
-        </Suspense>
-      </Canvas>
+            <Environment files="/venice_sunrise_1k.exr" />
+          </Suspense>
+        </Canvas>
 
-      <HtmlSection />
-    </>
+        <HtmlSection />
+      </>
+    </SmoothScroll>
   );
 }
 
