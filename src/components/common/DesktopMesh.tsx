@@ -27,29 +27,30 @@ const DesktopMesh = ({
   useCursor(hovered);
 
   return (
-    <mesh
-      receiveShadow
-      castShadow
-      onPointerOver={(e) => {
-        e.stopPropagation();
-        setHovered(true);
-      }}
-      onPointerOut={(e) => {
-        e.stopPropagation();
-        setHovered(false);
-      }}
-      onClick={(e) => {
-        e.stopPropagation();
-        handleCurrentContent(contentKey);
-        handleOpenMemberIntroModal(true);
-      }}
-      geometry={geometry}
-      position={position}
-    >
-      <meshStandardMaterial {...materialOptions} />
+    <group position={position}>
       {hovered && { ...children }}
-      <Outlines screenspace opacity={hovered ? 0.5 : 0} thickness={3} color="white" transparent />
-    </mesh>
+      <mesh
+        receiveShadow
+        castShadow
+        onPointerOver={(e) => {
+          e.stopPropagation();
+          setHovered(true);
+        }}
+        onPointerOut={(e) => {
+          e.stopPropagation();
+          setHovered(false);
+        }}
+        onClick={(e) => {
+          e.stopPropagation();
+          handleCurrentContent(contentKey);
+          handleOpenMemberIntroModal(true);
+        }}
+        geometry={geometry}
+      >
+        <meshStandardMaterial {...materialOptions} />
+        <Outlines screenspace opacity={hovered ? 0.5 : 0} thickness={3} color="white" transparent />
+      </mesh>
+    </group>
   );
 };
 

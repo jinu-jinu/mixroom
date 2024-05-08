@@ -32,26 +32,26 @@ const LargeModels = () => {
   return (
     <group dispose={null}>
       <mesh geometry={nodes.l1.geometry} position={[3.268, 0.997, -0.622]}>
-        <meshStandardMaterial {...l1Tex} metalness={0.8} />
+        <meshStandardMaterial {...l1Tex} metalness={0.8} envMapIntensity={1.2} />
       </mesh>
       <mesh geometry={nodes.l2.geometry} position={[5.155, 0.797, 4.344]}>
-        <meshStandardMaterial {...l2Tex} />
+        <meshStandardMaterial {...l2Tex} envMapIntensity={1.2} />
       </mesh>
       <mesh geometry={nodes.l2_fireplace.geometry} position={[0.285, 0.6, 0]}>
-        <meshStandardMaterial {...l2Tex} />
+        <meshStandardMaterial {...l2Tex} envMapIntensity={1.5} />
       </mesh>
       <mesh geometry={nodes.l3_yds.geometry} position={[9.946, 2.774, 6.001]}>
-        <meshStandardMaterial {...l3Texture} envMapIntensity={1.5} />
+        <meshStandardMaterial {...l3Texture} envMapIntensity={1.2} />
       </mesh>
       <mesh geometry={nodes.l3.geometry} position={[8.456, 1.199, 4.729]}>
-        <meshStandardMaterial {...l3Texture} metalness={0.7} />
+        <meshStandardMaterial {...l3Texture} metalness={0.7} envMapIntensity={0.8} />
       </mesh>
       <HilightMesh
         contentKey="kyujin"
         position={[7.886, 0.998, -2.027]}
         geometry={nodes.l3_mirror.geometry}
         annotation={mirrorAnnotation}
-        materialOptions={{ ...l3Texture, metalness: 0.8, envMapIntensity: 0.8 }}
+        materialOptions={{ ...l3Texture, metalness: 0.8, envMapIntensity: 1.2 }}
       />
     </group>
   );

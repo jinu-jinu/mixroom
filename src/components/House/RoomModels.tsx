@@ -19,10 +19,10 @@ const Room = () => {
   return (
     <group dispose={null}>
       <mesh geometry={nodes.ceil.geometry} position={[4.642, 0.002, 0.936]}>
-        <meshStandardMaterial {...ceilTex} envMapIntensity={1.2} />
+        <meshStandardMaterial {...ceilTex} envMapIntensity={2} metalness={0.2} />
       </mesh>
       <mesh geometry={nodes.wall.geometry} position={[4.642, 0.002, 0.936]}>
-        <meshStandardMaterial {...wallTex} envMapIntensity={1.1} metalness={0.2} roughness={0.8} />
+        <meshStandardMaterial {...wallTex} envMapIntensity={1.5} metalness={0.3} roughness={0.6} />
       </mesh>
     </group>
   );

@@ -43,26 +43,26 @@ const MediumModels = () => {
   return (
     <group dispose={null}>
       <mesh geometry={nodes.m1.geometry} position={[3.351, 0.493, -2.745]}>
-        <meshStandardMaterial {...m1Tex} />
+        <meshStandardMaterial {...m1Tex} envMapIntensity={1.2} />
       </mesh>
       <mesh geometry={nodes.m2.geometry} position={[-0.909, 0.238, 3.185]}>
         <meshStandardMaterial
           {...m2Tex}
-          metalness={0.7}
+          metalness={1}
           emissive={colors.white}
-          emissiveIntensity={5}
-          envMapIntensity={0.6}
+          emissiveIntensity={4}
+          envMapIntensity={1.3}
         />
       </mesh>
       <mesh geometry={nodes.m3.geometry} position={[4.47, 1.405, 7.529]}>
-        <meshStandardMaterial {...m3Tex} envMapIntensity={1.2} />
+        <meshStandardMaterial {...m3Tex} envMapIntensity={1.6} />
       </mesh>
       <mesh geometry={nodes.m4.geometry} position={[-2.303, 0.513, 6.194]}>
         <meshStandardMaterial
           {...m4Tex}
           emissive={colors.blue}
-          emissiveIntensity={3}
-          envMapIntensity={0.7}
+          emissiveIntensity={1.5}
+          envMapIntensity={1.6}
           metalness={0.8}
         />
       </mesh>
@@ -71,19 +71,19 @@ const MediumModels = () => {
         geometry={nodes.fan_site.geometry}
         position={[12.978, 1.714, 2.5]}
         src={hyperlinks.fan_site}
-        materialOptions={{ ...m4Tex, envMapIntensity: 1.3 }}
+        materialOptions={{ ...m4Tex, envMapIntensity: 2 }}
       />
       <HrefMesh
         geometry={nodes.once_haewon.geometry}
         position={[12.978, 1.714, 2.5]}
         src={hyperlinks.once_haewon}
-        materialOptions={{ ...m4Tex, envMapIntensity: 1.3 }}
+        materialOptions={{ ...m4Tex, envMapIntensity: 2 }}
       />
       <HrefMesh
         geometry={nodes.jiwoohae.geometry}
         position={[12.978, 1.714, 2.5]}
         src={hyperlinks.jiwoohae}
-        materialOptions={{ ...m4Tex, envMapIntensity: 1.3 }}
+        materialOptions={{ ...m4Tex, envMapIntensity: 2 }}
       />
 
       <HilightMesh
@@ -101,8 +101,8 @@ const MediumModels = () => {
         materialOptions={{
           ...m2Tex,
           emissive: colors.yellow,
-          emissiveIntensity: 4,
-          envMapIntensity: 1.2,
+          emissiveIntensity: 10,
+          envMapIntensity: 1.7,
         }}
       />
     </group>

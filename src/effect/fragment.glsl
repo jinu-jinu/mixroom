@@ -1,5 +1,3 @@
-
-
 void mainImage(const in vec4 ic, const in vec2 uv, out vec4 oc) {   
     vec4 texture = texture2D(inputBuffer, uv);
     vec3 col = texture.rgb;

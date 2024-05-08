@@ -39,46 +39,46 @@ const SmallModels = () => {
   return (
     <group dispose={null}>
       <mesh geometry={nodes.s1.geometry} position={[4.201, 0.99, -2.639]}>
-        <meshStandardMaterial {...s1Tex} />
+        <meshStandardMaterial {...s1Tex} envMapIntensity={1.5} />
       </mesh>
       <mesh geometry={nodes.s2.geometry} position={[12.657, 0.917, 3.101]}>
-        <meshStandardMaterial {...s2Tex} />
+        <meshStandardMaterial {...s2Tex} envMapIntensity={1.5} />
       </mesh>
       <mesh geometry={nodes.s3.geometry} position={[2.42, 0.961, -2.657]}>
         <meshStandardMaterial
           {...s3Tex}
           metalness={0.7}
           emissive={colors.white}
-          emissiveIntensity={1.2}
+          emissiveIntensity={0.7}
         />
       </mesh>
       <mesh geometry={nodes.s4.geometry} position={[5.286, 0.998, -4.03]}>
-        <meshStandardMaterial {...s4Tex} metalness={0.5} />
+        <meshStandardMaterial {...s4Tex} metalness={0.5} envMapIntensity={1.5} />
       </mesh>
 
       <HrefMesh
         geometry={nodes.twitter.geometry}
         position={[-1.5, 2.225, 7.67]}
         src={hyperlinks.twitter}
-        materialOptions={{ ...s1Tex }}
+        materialOptions={{ ...s1Tex, envMapIntensity: 1.5 }}
       />
       <HrefMesh
         geometry={nodes.instagram.geometry}
         position={[0.496, 2.227, 7.67]}
         src={hyperlinks.instagram}
-        materialOptions={{ ...s1Tex, envMapIntensity: 1.5 }}
+        materialOptions={{ ...s1Tex, envMapIntensity: 2.5 }}
       />
       <HrefMesh
         geometry={nodes.youtube.geometry}
         position={[1.242, 2.203, 7.669]}
         src={hyperlinks.youtube}
-        materialOptions={{ ...s2Tex }}
+        materialOptions={{ ...s2Tex, envMapIntensity: 2 }}
       />
       <HrefMesh
         geometry={nodes.jyp.geometry}
         position={[1.246, 1.053, 7.67]}
         src={hyperlinks.jyp}
-        materialOptions={{ ...s2Tex }}
+        materialOptions={{ ...s2Tex, envMapIntensity: 2 }}
       />
 
       <HilightMesh

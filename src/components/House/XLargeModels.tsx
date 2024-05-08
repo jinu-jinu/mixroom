@@ -16,14 +16,14 @@ const XLarge = () => {
   return (
     <group dispose={null}>
       <mesh geometry={nodes.xl.geometry} position={[1.576, 1.842, 1.454]}>
-        <meshStandardMaterial {...xlTex} metalness={0.8} envMapIntensity={1.1} />
+        <meshStandardMaterial {...xlTex} metalness={0.8} envMapIntensity={1.5} />
       </mesh>
       <mesh geometry={nodes.xl_emission.geometry} position={[4.002, 2.1, -4.443]}>
         <meshStandardMaterial
           {...xlTex}
           emissive={colors.orange}
-          emissiveIntensity={1.2}
-          envMapIntensity={1.2}
+          emissiveIntensity={1.5}
+          envMapIntensity={1.4}
         />
       </mesh>
     </group>
