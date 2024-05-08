@@ -1,59 +1,30 @@
 import { motion } from "framer-motion";
-import { SlideLeftVariant } from "../utils/variants";
-import ContainerSection from "./ContentSection";
-import Stripe from "./Stripe";
-import { useCurrentContent } from "../stores/ContentStore";
+import { useModalActions } from "../stores/ModalStore";
+import { useCurrentMember } from "../stores/MemberStore";
 
 const MemberIntroModal = () => {
-  const currentContent = useCurrentContent();
-
-  if (!currentContent) return <div>NOT INFORMATION</div>;
+  const handleOpenMemberIntroModal = useModalActions("handleOpenMemberIntroModal");
+  const currentMember = useCurrentMember();
 
   return (
     <motion.section
-      initial="initial"
-      animate="animate"
-      exit="initial"
-      variants={SlideLeftVariant}
-      className="absolute top-0 w-full h-auto overflow-x-hidden"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={(e) => {
+        const target = (e.target as HTMLElement).dataset.modal;
+        if (!target || target === "inner") return;
+        handleOpenMemberIntroModal(false);
+      }}
+      data-modal="outer"
+      className="fixed z-10 top-0 left-0 w-full h-[100dvh] backdrop-blur"
     >
-      <div className="w-full h-[100dvh] text-center absolute top-0 left-0 flex flex-col justify-center items-center pointer-events-none">
-        <h1 className="font-Prompt font-black text-[6vmax] text-gradient-1 tracking-wide">
-          {currentContent.englishTitle}
-        </h1>
-      </div>
-
-      <section className="bg-black">
-        <div className="flex flex-col justify-center items-center">
-          <img
-            src={currentContent.photoResources[currentContent.imgIdx].resource}
-            alt="bg image"
-            className="main-img"
-            width="100%"
-            height="100dvh"
-          />
-
-          <Stripe />
-
-          <ContainerSection title="PHOTOS" resources={currentContent.photoResources} type="image" />
-
-          <Stripe />
-          <ContainerSection
-            title="YOUTUBES"
-            resources={currentContent.youtubeResources}
-            type="video"
-          />
-
-          <Stripe />
-          <ContainerSection
-            title="SHORTS"
-            resources={currentContent.shortsResources}
-            type="video"
-          />
-
-          <Stripe />
-        </div>
-      </section>
+      <motion.div
+        data-modal="inner"
+        className="absolute z-20 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[50vmax] h-[40vh] bg-red-300"
+      >
+        {!currentMember ? <div>wait</div> : <div>{currentMember.title}</div>}
+      </motion.div>
     </motion.section>
   );
 };

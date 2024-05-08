@@ -19,8 +19,8 @@ const HtmlSection = () => {
       <UserInterface />
 
       <AnimatePresence>
-        {isLoading ? <Loading key="loading" /> : null}
-        {isOpenMainModal ? <MainModal key="mainModal" /> : null}
+        {isLoading && <Loading key="loading" />}
+        {isOpenMainModal && <MainModal key="mainModal" />}
         {isOpenMemberIntroModal && <MemberIntroModal key="memberIntroModal" />}
       </AnimatePresence>
     </>

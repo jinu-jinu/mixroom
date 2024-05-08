@@ -2,7 +2,7 @@ import { useGLTF, useTexture } from "@react-three/drei";
 import { sNodesType } from "../../types";
 import { colors, textureSrc } from "../../utils/utils";
 import HilightMesh from "../common/HilightMesh";
-import { earAnnotation, hyperlinks, magicAnnotation } from "../../data";
+import { hilightEar, hilightMagicHat, hyperlinks } from "../../data";
 import HrefMesh from "../common/HrefMesh";
 
 const SmallModels = () => {
@@ -82,17 +82,13 @@ const SmallModels = () => {
       />
 
       <HilightMesh
-        contentKey="sullyoon"
-        annotation={earAnnotation}
+        hilightInfo={hilightEar}
         geometry={nodes.rabbit_ear.geometry}
-        position={[9.537, 0.947, 6.017]}
         materialOptions={{ ...s2Tex, envMapIntensity: 1.5 }}
       />
       <HilightMesh
-        contentKey="lily"
-        annotation={magicAnnotation}
+        hilightInfo={hilightMagicHat}
         geometry={nodes.magic_hat.geometry}
-        position={[4.467, 1.709, 7.665]}
         materialOptions={{ ...s2Tex, envMapIntensity: 1.6 }}
       />
     </group>

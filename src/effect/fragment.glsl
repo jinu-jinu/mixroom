@@ -10,6 +10,8 @@ void mainImage(const in vec4 ic, const in vec2 uv, out vec4 oc) {
 
     // contrast
     col = (col - 0.5) * 0.95 + 0.5;
-  
+
+
+    
     oc = vec4(col, texture.a);
 }

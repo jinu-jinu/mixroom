@@ -2,7 +2,7 @@ import { useGLTF, useTexture } from "@react-three/drei";
 import { mNodesType } from "../../types";
 import { colors, textureSrc } from "../../utils/utils";
 import HilightMesh from "../common/HilightMesh";
-import { cakeAnnotation, canvasAnnotation, hyperlinks } from "../../data";
+import { hilightCake, hilightCanvas, hyperlinks } from "../../data";
 import HrefMesh from "../common/HrefMesh";
 
 const MediumModels = () => {
@@ -87,17 +87,13 @@ const MediumModels = () => {
       />
 
       <HilightMesh
-        contentKey="jiwoo"
-        annotation={cakeAnnotation}
+        hilightInfo={hilightCake}
         geometry={nodes.cake.geometry}
-        position={[4.201, 0.908, -2.143]}
         materialOptions={{ ...m4Tex }}
       />
       <HilightMesh
-        contentKey="bae"
-        annotation={canvasAnnotation}
+        hilightInfo={hilightCanvas}
         geometry={nodes.canvas.geometry}
-        position={[8.993, 0.543, 0.9]}
         materialOptions={{
           ...m2Tex,
           emissive: colors.yellow,

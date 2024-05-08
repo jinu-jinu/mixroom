@@ -8,7 +8,7 @@ const ScrollIndicator = () => {
     >
       <div className="w-[30px] h-[60px] rounded-3xl border-[3px] border-white flex justify-center items-start p-2">
         <motion.div
-          animate={{ y: [-10, 10, 30, 40], opacity: [0, 1, 1, 0] }}
+          animate={{ y: [-10, 10, 20, 30], opacity: [0, 1, 1, 0] }}
           transition={{
             type: "tween",
             duration: 3,

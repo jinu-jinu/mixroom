@@ -2,7 +2,7 @@ import { useGLTF, useTexture } from "@react-three/drei";
 import { xsNodesType } from "../../types";
 import { textureSrc } from "../../utils/utils";
 import HilightMesh from "../common/HilightMesh";
-import { glassesAnnotation } from "../../data";
+import { hilightGlasses } from "../../data";
 
 const XSmallModels = () => {
   const { nodes } = useGLTF("./models/xs.glb") as unknown as xsNodesType;
@@ -42,10 +42,8 @@ const XSmallModels = () => {
       </mesh>
 
       <HilightMesh
-        contentKey="haewon"
-        annotation={glassesAnnotation}
+        hilightInfo={hilightGlasses}
         geometry={nodes.glasses.geometry}
-        position={[-1.034, 0.489, 3.095]}
         materialOptions={{
           ...xs1Tex,
         }}

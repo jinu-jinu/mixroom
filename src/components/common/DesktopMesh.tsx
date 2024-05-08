@@ -1,34 +1,34 @@
-import { Outlines, useCursor } from "@react-three/drei";
+import { Outlines, Sparkles, useCursor } from "@react-three/drei";
 import { useState } from "react";
-import { useContentActions } from "../../stores/ContentStore";
-import { ContentKey } from "../../types";
 import { BufferGeometry, MeshStandardMaterial, NormalBufferAttributes } from "three";
 import { useModalActions } from "../../stores/ModalStore";
+import { HilightMeshType } from "../../types";
+import { useMemberActions } from "../../stores/MemberStore";
 
 const DesktopMesh = ({
-  contentKey,
   geometry,
-  position,
-  children,
+  hilightInfo,
   materialOptions,
 }: {
-  contentKey: ContentKey;
   geometry: BufferGeometry<NormalBufferAttributes>;
-  position: [number, number, number];
-  children: JSX.Element;
+  hilightInfo: HilightMeshType;
   materialOptions: Partial<MeshStandardMaterial>;
 }) => {
   const [hovered, setHovered] = useState(false);
-  const handleOpenMemberIntroModal = useModalActions("handleOpenMemberIntroModal") as (
-    v: boolean
-  ) => void;
-  const handleCurrentContent = useContentActions("handleCurrentContent");
-
+  const handleOpenMemberIntroModal = useModalActions("handleOpenMemberIntroModal");
+  const handleCurrentMember = useMemberActions("handleCurrentMember");
   useCursor(hovered);
 
   return (
-    <group position={position}>
-      {hovered && { ...children }}
+    <group position={hilightInfo.position}>
+      {hovered && (
+        <Sparkles
+          count={30}
+          speed={0.4}
+          size={hilightInfo.sparkleSize}
+          scale={hilightInfo.sparkleScale}
+        />
+      )}
       <mesh
         receiveShadow
         castShadow
@@ -42,8 +42,8 @@ const DesktopMesh = ({
         }}
         onClick={(e) => {
           e.stopPropagation();
-          handleCurrentContent(contentKey);
           handleOpenMemberIntroModal(true);
+          handleCurrentMember(hilightInfo.key);
         }}
         geometry={geometry}
       >

@@ -76,34 +76,11 @@ export type OthersNodesType = GLTF & {
   };
 };
 
-export type Direction = "right" | "left";
+export type MemberKey = "lily" | "haewon" | "sullyoon" | "bae" | "jiwoo" | "kyujin";
 
-export type ResourceType = {
-  info: string;
-  resource: string;
-  comment: string;
-}[];
-
-export type Content = {
-  englishTitle: string;
-  imgIdx: number;
-  photoResources: ResourceType;
-  youtubeResources: ResourceType;
-  shortsResources: ResourceType;
-};
-
-export type ContentKey = "lily" | "haewon" | "sullyoon" | "bae" | "jiwoo" | "kyujin";
-
-export type ContentList = {
-  [key in ContentKey]: Content;
-};
-
-export type AnnotationType = {
-  title: string;
+export type HilightMeshType = {
   position: [number, number, number];
-  rotation: [number, number, number];
-  memberIdx: number;
-  factor: number;
+  key: MemberKey;
   sparkleScale: number;
   sparkleSize: number;
 };
@@ -138,13 +115,6 @@ export type DeviceStoreType = {
   };
 };
 
-export type ContentStoreType = {
-  currentContent: Content | null;
-  actions: {
-    handleCurrentContent: (v: ContentKey) => void;
-  };
-};
-
 export type LoadingStoreType = {
   isAssetDownloaded: boolean;
   isLoading: boolean;
@@ -155,14 +125,22 @@ export type LoadingStoreType = {
 };
 
 export type ModalStoreType = {
-  currentModal: "main" | "memberIntro" | null;
-  isOpenModal: boolean;
   isOpenMainModal: boolean;
   isOpenMemberIntroModal: boolean;
   actions: {
-    handleCurrentModal: (v: "main" | "memberIntro" | null) => void;
-    handleOpenModal: (v: boolean) => void;
     handleOpenMainModal: (v: boolean) => void;
     handleOpenMemberIntroModal: (v: boolean) => void;
+  };
+};
+
+export type MemberInfoType = {
+  title: string;
+  description: string;
+};
+
+export type MemberStoreType = {
+  currentMember: MemberInfoType | null;
+  actions: {
+    handleCurrentMember: (v: MemberKey) => void;
   };
 };

@@ -1,39 +1,36 @@
 import { BufferGeometry, MeshStandardMaterial, NormalBufferAttributes } from "three";
-import { Outlines } from "@react-three/drei";
-import { ContentKey } from "../../types";
-import { useContentActions } from "../../stores/ContentStore";
-import { useIsOpenModal, useModalActions } from "../../stores/ModalStore";
+import { Outlines, Sparkles } from "@react-three/drei";
+import { HilightMeshType } from "../../types";
+import { useModalActions } from "../../stores/ModalStore";
+import { useMemberActions } from "../../stores/MemberStore";
 
 const MobileMesh = ({
-  contentKey,
   geometry,
-  position,
-  children,
+  hilightInfo,
   materialOptions,
 }: {
-  contentKey: ContentKey;
   geometry: BufferGeometry<NormalBufferAttributes>;
-  position: [number, number, number];
-  children: JSX.Element;
+  hilightInfo: HilightMeshType;
   materialOptions: Partial<MeshStandardMaterial>;
 }) => {
-  const isOpenModal = useIsOpenModal();
-  const handleOpenMemberIntroModal = useModalActions("handleOpenMemberIntroModal") as (
-    v: boolean
-  ) => void;
-  const handleCurrentContent = useContentActions("handleCurrentContent");
+  const handleOpenMemberIntroModal = useModalActions("handleOpenMemberIntroModal");
+  const handleCurrentMember = useMemberActions("handleCurrentMember");
 
   return (
-    <group position={position}>
-      {isOpenModal ? null : { ...children }}
+    <group position={hilightInfo.position}>
+      <Sparkles
+        count={30}
+        speed={0.4}
+        size={hilightInfo.sparkleSize}
+        scale={hilightInfo.sparkleScale}
+      />
       <mesh
         receiveShadow
         castShadow
         onClick={(e) => {
           e.stopPropagation();
-
-          handleCurrentContent(contentKey);
           handleOpenMemberIntroModal(true);
+          handleCurrentMember(hilightInfo.key);
         }}
         geometry={geometry}
       >

@@ -2,7 +2,7 @@ import { useGLTF, useTexture } from "@react-three/drei";
 import { lNodesType } from "../../types";
 import { textureSrc } from "../../utils/utils";
 import HilightMesh from "../common/HilightMesh";
-import { mirrorAnnotation } from "../../data";
+import { hilightMirror } from "../../data";
 
 const LargeModels = () => {
   const { nodes } = useGLTF("./models/l.glb") as unknown as lNodesType;
@@ -47,10 +47,8 @@ const LargeModels = () => {
         <meshStandardMaterial {...l3Texture} metalness={0.7} envMapIntensity={0.8} />
       </mesh>
       <HilightMesh
-        contentKey="kyujin"
-        position={[7.886, 0.998, -2.027]}
+        hilightInfo={hilightMirror}
         geometry={nodes.l3_mirror.geometry}
-        annotation={mirrorAnnotation}
         materialOptions={{ ...l3Texture, metalness: 0.8, envMapIntensity: 1.2 }}
       />
     </group>

@@ -1,8 +1,6 @@
 import { PBRType, TextureType } from "../types";
 import { Color } from "three";
 
-const isOdd = (n: number) => (n % 2 ? true : false);
-
 const isMobileDevice = (agent: string) => {
   const mobileRegex = [/Android/i, /iPhone/i, /iPad/i, /iPod/i, /BlackBerry/i, /Windows Phone/i];
 
@@ -20,4 +18,4 @@ const colors = {
   blue: new Color("#55c4ff"),
 };
 
-export { isOdd, isMobileDevice, textureSrc, colors };
+export { isMobileDevice, textureSrc, colors };
