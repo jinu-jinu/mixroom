@@ -17,13 +17,18 @@ const MemberIntroModal = () => {
         handleOpenMemberIntroModal(false);
       }}
       data-modal="outer"
-      className="fixed z-10 top-0 left-0 w-full h-[100dvh] backdrop-blur"
+      className="fixed z-10 top-0 left-0 w-full font-Prompt h-[100dvh] backdrop-blur bg-[rgba(0,0,0,.6)]"
     >
       <motion.div
         data-modal="inner"
-        className="absolute z-20 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[50vmax] h-[40vh] bg-red-300"
+        className="absolute z-20 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[40vmax] lg:w-[30vmax] h-[50vh] rounded-3xl bg-[#fefefe] flex flex-col items-center p-4"
       >
-        {!currentMember ? <div>wait</div> : <div>{currentMember.title}</div>}
+        <div className="font-black text-[3vmax] flex-[0.3] flex items-center">
+          {currentMember?.title.toUpperCase()}
+        </div>
+        <p className="flex-[0.7] w-full text-[14px] lg:text-[16px] tracking-tighter flex flex-col justify-center p-4">
+          item information.
+        </p>
       </motion.div>
     </motion.section>
   );
