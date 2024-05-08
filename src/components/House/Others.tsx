@@ -1,14 +1,8 @@
-import { Html, useGLTF, useTexture } from "@react-three/drei";
+import { useGLTF, useTexture } from "@react-three/drei";
 import { OthersNodesType } from "../../types";
 import { colors } from "../../utils/utils";
-import { useThree } from "@react-three/fiber";
-import { useIsOpenMainModal, useIsOpenMemberIntroModal } from "../../stores/ModalStore";
 
 const Others = () => {
-  const { gl } = useThree();
-  const isOpenMainModal = useIsOpenMainModal();
-  const isOpenMemberIntroModal = useIsOpenMemberIntroModal();
-
   const { nodes } = useGLTF("./models/others.glb") as unknown as OthersNodesType;
   const [iphoneMap, drawingMap] = useTexture([
     "./textures/others/iphone.avif",
@@ -37,14 +31,7 @@ const Others = () => {
           metalness={0.3}
         />
       </mesh>
-      <mesh geometry={nodes.tv_display.geometry} position={[0.121, 1.261, 7.67]}>
-        {/* 비디오 텍스쳐로 변경 */}
-        {/* <Html portal={{ current: gl.domElement.parentNode as HTMLElement }} transform center>
-          {isOpenMainModal || isOpenMemberIntroModal ? null : (
-            
-          )}
-        </Html> */}
-      </mesh>
+      <mesh geometry={nodes.tv_display.geometry} position={[0.121, 1.261, 7.67]}></mesh>
     </group>
   );
 };
