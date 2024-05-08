@@ -92,7 +92,7 @@ function App() {
               <FilterElem />
             </EffectComposer>
 
-            <Environment files="/venice_sunrise_1k.exr" />
+            <Environment preset="sunset" />
           </Suspense>
         </Canvas>
 
