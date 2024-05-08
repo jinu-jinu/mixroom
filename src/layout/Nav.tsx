@@ -24,6 +24,7 @@ const Nav = () => {
         className="h-full flex justify-center items-center absolute top-0 right-[2vmax]"
         onClick={infoBtnHandler}
         name="info button"
+        type="button"
       >
         <motion.svg
           whileHover={{
