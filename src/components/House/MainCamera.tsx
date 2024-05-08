@@ -20,7 +20,7 @@ const MainCamera = () => {
     cameraAction.current.time = MathUtils.lerp(
       cameraAction.current.time,
       cameraAction.current.getClip().duration * e,
-      0.1
+      0.15
     );
   });
 

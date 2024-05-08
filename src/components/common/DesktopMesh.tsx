@@ -21,14 +21,13 @@ const DesktopMesh = ({
 
   return (
     <group position={hilightInfo.position}>
-      {hovered && (
-        <Sparkles
-          count={30}
-          speed={0.4}
-          size={hilightInfo.sparkleSize}
-          scale={hilightInfo.sparkleScale}
-        />
-      )}
+      <Sparkles
+        count={30}
+        speed={0.4}
+        size={hilightInfo.sparkleSize}
+        scale={hilightInfo.sparkleScale}
+        opacity={hovered ? 1 : 0}
+      />
       <mesh
         receiveShadow
         castShadow

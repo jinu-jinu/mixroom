@@ -4,7 +4,6 @@ export default {
   theme: {
     extend: {},
     fontFamily: {
-      Nanum: ["Nanum Gothic", "sans-serif"],
       Prompt: ["Prompt", "sans-serif"],
     },
   },
