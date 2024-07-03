@@ -1,7 +1,8 @@
 import { useEffect, useRef } from "react";
 import { PerspectiveCamera, useAnimations, useGLTF } from "@react-three/drei";
 import { AnimationAction, Group, MathUtils } from "three";
-import { useMotionValueEvent, useScroll } from "framer-motion";
+import { useScroll } from "framer-motion";
+import { useFrame } from "@react-three/fiber";
 
 const MainCamera = () => {
   const group = useRef<Group>(null!);
@@ -16,10 +17,11 @@ const MainCamera = () => {
     cameraAction.current.paused = true;
   }, []);
 
-  useMotionValueEvent(scrollYProgress, "change", (e) => {
+  useFrame(() => {
+    if (!cameraAction.current) return;
     cameraAction.current.time = MathUtils.lerp(
       cameraAction.current.time,
-      cameraAction.current.getClip().duration * e,
+      cameraAction.current.getClip().duration * scrollYProgress.get(),
       0.15
     );
   });

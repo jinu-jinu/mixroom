@@ -71,33 +71,31 @@ function App() {
 
   return (
     <SmoothScroll>
-      <>
-        <Canvas
-          shadows
-          style={{
-            width: "100%",
-            height: "100dvh",
-            position: "fixed",
-            top: 0,
-            left: 0,
-            backgroundColor: "#afeefa",
-          }}
-        >
-          <Lights />
+      <Canvas
+        shadows
+        style={{
+          width: "100%",
+          height: "100dvh",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          backgroundColor: "#afeefa",
+        }}
+      >
+        <Lights />
 
-          <Suspense fallback={null}>
-            <House />
-            <MainCamera />
-            <EffectComposer disableNormalPass>
-              <FilterElem />
-            </EffectComposer>
+        <Suspense fallback={null}>
+          <House />
+          <MainCamera />
+          <EffectComposer disableNormalPass>
+            <FilterElem />
+          </EffectComposer>
 
-            <Environment preset="sunset" />
-          </Suspense>
-        </Canvas>
+          <Environment preset="sunset" />
+        </Suspense>
+      </Canvas>
 
-        <HtmlSection />
-      </>
+      <HtmlSection />
     </SmoothScroll>
   );
 }

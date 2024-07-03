@@ -1,12 +1,12 @@
-import Lenis from "@studio-freight/lenis";
-import { useEffect, useMemo } from "react";
+import Lenis from "lenis";
+import { ReactNode, useEffect, useMemo } from "react";
 import { useIsLoading } from "../stores/LoadingStore";
 
-const SmoothScroll = ({ children }: { children: JSX.Element }) => {
+const SmoothScroll = ({ children }: { children: ReactNode }) => {
   const lenis = useMemo(
     () =>
       new Lenis({
-        duration: 1,
+        duration: 1.3,
       }),
     []
   );
